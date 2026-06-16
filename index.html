@@ -5,36 +5,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML 1-1 실습</title>
     <style>
-        *{
+        /* 1. Reset 및 부드러운 폰트 렌더링 */
+        * {
             padding: 0;
             margin: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-        .all{
-            width: 1200px;
+
+        body {
+            background-color: #f8f9fa; /* 차분하고 밝은 그레이 */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: #212529;
+            min-height: 100vh;
+            padding-bottom: 80px;
+        }
+
+        /* 2. 레이아웃 컨테이너 */
+        .all {
+            width: 100%;
+            max-width: 1024px; /* 현대적인 웹 표준 해상도에 맞춘 컴팩트한 너비 */
             margin: 0 auto;
+            padding: 0 24px;
         }
-        header{
-            height: 80px;
+
+        /* 3. 헤더 영역 디자인 */
+        header {
+            padding: 60px 0 40px 0;
             text-align: center;
         }
-        section{
-            text-align: center;
-            height: 70px;
+
+        header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1a1d20; /* 칠흑색 대신 고급스러운 다크 그레이 */
+            letter-spacing: -0.5px;
+            position: relative;
+            display: inline-block;
         }
-        .div{
-            width: 300px;
-            height: 100px;
-            border: 1px solid lightgray;
-            border-radius: 10px;
-            margin-left: 5px;
-            float: left;
+
+        /* 4. 복잡한 section 구조 대신 메인 그리드 시스템 도입 */
+        main {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 완벽한 3열 배치 */
+            gap: 24px; /* 카드 사이의 여백 */
         }
-        .div a{
+
+        /* 5. 카드 컴포넌트 세부 디자인 (Minimal & Clean) */
+        .div {
+            background-color: #ffffff;
+            height: 140px; /* 글자가 넉넉히 수용되도록 높이 상향 */
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 24px;
+            
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* 타이틀과 링크를 위아래로 균형감 있게 배치 */
+            align-items: flex-start; /* 자연스러운 좌측 정렬로 템플릿 느낌 제거 */
+            
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            text-decoration: none; /* 카드 전체를 링크처럼 작동하게 만들기 위함 */
+        }
+
+        /* 마우스 호버 시 자연스럽고 입체적인 인터랙션 */
+        .div:hover {
+            border-color: #dee2e6;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.04);
+            cursor: pointer;
+        }
+
+        /* 6. 타이틀 및 내부 링크 텍스트 */
+        h3 {
+            font-size: 15px;
+            font-weight: 600;
+            color: #343a40;
+            line-height: 1.45;
+            text-align: left;
+            word-break: keep-all; /* 조사 기준 자연스러운 줄바꿈 */
+        }
+
+        .div a {
+            font-size: 13px;
+            font-weight: 500;
+            color: #6c757d; /* 차분한 옅은 회색 */
             text-decoration: none;
-            color: black;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: color 0.15s ease;
         }
-        .ml{
-            margin-left: 142.5px;
+
+        /* 호버 시 링크 텍스트 강조 */
+        .div:hover a {
+            color: #1a1d20;
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -43,48 +111,51 @@
         <header>
             <h1>HTML 5 1-1반 실습파일</h1>
         </header>
-        <section>
-            <div class="div ml">
+        
+        <!-- 💡 불필요한 마진값과 수많은 section 태그를 지우고 깔끔한 하나의 그리드로 묶었습니다. -->
+        <main>
+            <!-- 1행 -->
+            <div class="div" onclick="location.href='https://vr.yuhan.ac.kr/index.do'">
                 <h3>유한대학교 컴퓨터공학과<br>게임콘텐츠전공</h3>
                 <a href="https://vr.yuhan.ac.kr/index.do">클릭하세요~</a>
             </div>
-            <div class="div">
+            <div class="div" onclick="location.href='flex.html'">
                 <h3>김중석의 홈페이지</h3>
                 <a href="flex.html">클릭하세요~</a>
             </div>
-            <div class="div">
+            <div class="div" onclick="location.href='zindex.html'">
                 <h3>z-index 실습</h3>
                 <a href="zindex.html">클릭하세요~</a>
             </div>
-        </section>
-        <section>
-            <div class="div ml">
+
+            <!-- 2행 -->
+            <div class="div" onclick="location.href='boxtextch.html'">
                 <h3>flex 연습 캐릭터 배치</h3>
                 <a href="boxtextch.html">클릭하세요~</a>
             </div>
-            <div class="div">
+            <div class="div" onclick="location.href='#'">
                 <h3>티몬 홈페이지</h3>
                 <a href="#">클릭하세요~</a>
             </div>
-            <div class="div">
+            <div class="div" onclick="location.href='#'">
                 <h3>티몬 홈페이지</h3>
                 <a href="#">클릭하세요~</a>
             </div>
-        </section>
-        <section>
-            <div class="div ml">
+
+            <!-- 3행 -->
+            <div class="div" onclick="location.href='#'">
                 <h3>티몬 홈페이지</h3>
                 <a href="#">클릭하세요~</a>
             </div>
-            <div class="div">
+            <div class="div" onclick="location.href='#'">
                 <h3>티몬 홈페이지</h3>
                 <a href="#">클릭하세요~</a>
             </div>
-            <div class="div">
+            <div class="div" onclick="location.href='#'">
                 <h3>티몬 홈페이지</h3>
                 <a href="#">클릭하세요~</a>
             </div>
-        </section>
+        </main>
     </div>
 </body>
 </html>
